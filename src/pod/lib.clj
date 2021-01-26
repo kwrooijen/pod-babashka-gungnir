@@ -3,7 +3,8 @@
   (:require [bencode.core :as bencode]
             [clojure.edn :as edn]
             [clojure.java.io :as io]
-            [clojure.walk :as walk])
+            [clojure.walk :as walk]
+            [clojure.repl])
   (:import [java.io PushbackInputStream]))
 
 (def ^:private stdin (PushbackInputStream. System/in))
@@ -107,7 +108,22 @@
           {}
           (keys (ns-publics ns))))
 
+(defn ->code [ns n]
+  (clojure.repl/source-fn
+   (symbol (name ns) (name n))))
 
-(defn gen-describe-map [ns]
-  {:name ns
-   :vars (mapv (fn [n] {:name n}) (keys (ns-publics ns)))})
+(defn gen-describe-map
+  ([ns] (gen-describe-map ns {}))
+  ([ns {:keys [client-side require]}]
+   {:name ns
+    :vars
+    (mapv (fn [n]
+            (if ((set client-side) n)
+              {:name n
+               :code
+               (reduce (fn [acc req]
+                         (format "(require '%s)\n%s" req acc))
+                       (->code ns n)
+                       require)}
+              {:name n}))
+          (keys (ns-publics ns)))}))

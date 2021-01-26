@@ -13,17 +13,22 @@
 (def describe-map
   {:format :edn
    :namespaces
-   [(pod.lib/gen-describe-map 'gungnir.changeset)
+   [(pod.lib/gen-describe-map 'next.jdbc)
+    (pod.lib/gen-describe-map 'gungnir.changeset)
     (pod.lib/gen-describe-map 'gungnir.database)
     (pod.lib/gen-describe-map 'gungnir.factory)
     (pod.lib/gen-describe-map 'gungnir.migration)
     (pod.lib/gen-describe-map 'gungnir.model)
     (pod.lib/gen-describe-map 'gungnir.query)
-    (pod.lib/gen-describe-map 'gungnir.transaction)]
+    (pod.lib/gen-describe-map 'gungnir.transaction
+                              {:client-side ['execute!]
+                               :require '[[next.jdbc :as jdbc]
+                                          [gungnir.database :refer [*datasource* *tx-datasource*]]]})]
    :opts {:shutdown {}}})
 
 (def ^:private definitions
-  (merge (pod.lib/gen-definitions 'gungnir.changeset)
+  (merge (pod.lib/gen-definitions 'next.jdbc)
+         (pod.lib/gen-definitions 'gungnir.changeset)
          (pod.lib/gen-definitions 'gungnir.database)
          (pod.lib/gen-definitions 'gungnir.factory)
          (pod.lib/gen-definitions 'gungnir.migration)

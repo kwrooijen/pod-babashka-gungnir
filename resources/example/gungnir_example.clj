@@ -1,5 +1,5 @@
 (require '[babashka.pods :as pods])
-(pods/load-pod "../../pod-babashka-gungnir")
+(pods/load-pod "./pod-bb-gungnir.sh")
 
 (ns main
   (:require
@@ -49,17 +49,18 @@
 ;;   "ENCRYPTED")
 
 ;; Doesn't work
-;; (gungnir.transaction/execute!
-;;  (fn []
-;;    (-> {:user/email "anon@mail.com"
-;;         :user/password "some-password"}
-;;        (gungnir.changeset/create)
-;;        (gungnir.query/save!))))
 
-(-> {:user/email "user@mail.com"
-     :user/password "some-password"}
-    (gungnir.changeset/create)
-    (gungnir.query/save!)
-    (println))
+(gungnir.transaction/execute!
+ (fn []
+   (-> {:user/email "anon@mail.com"
+        :user/password "some-password"}
+       (gungnir.changeset/create)
+       (gungnir.query/save!))))
+
+;; (-> {:user/email "user@mail.com"
+;;      :user/password "some-password"}
+;;     (gungnir.changeset/create)
+;;     (gungnir.query/save!)
+;;     (println))
 
 (gungnir.query/all! :user)
