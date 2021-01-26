@@ -1,0 +1,66 @@
+[ {
+    "name" : "org.postgresql.jdbc.PgConnection",
+    "methods": [{"name":"close"}]
+  },
+  {
+    "name" : "org.postgresql.jdbc.PgDatabaseMetaData",
+    "allPublicMethods" : true,
+    "allPublicFields" : true,
+    "allPublicConstructors" : true
+  },
+  {
+    "name" : "java.sql.Statement",
+    "allDeclaredConstructors" : true,
+    "allPublicConstructors" : true,
+    "allDeclaredMethods" : true,
+    "allPublicMethods" : true
+  },
+  {
+    "name" : "[Ljava.sql.Statement;",
+    "allDeclaredConstructors" : true,
+    "allPublicConstructors" : true,
+    "allDeclaredMethods" : true,
+    "allPublicMethods" : true
+  },
+  {
+    "name" : "com.zaxxer.hikari.pool.HikariProxyConnection",
+    "allDeclaredConstructors" : true,
+    "allPublicConstructors" : true,
+    "allDeclaredMethods" : true,
+    "allPublicMethods" : true
+  },
+  {
+    "name" : "com.zaxxer.hikari.pool.HikariProxyResultSet",
+    "allDeclaredConstructors" : true,
+    "allPublicConstructors" : true,
+    "allDeclaredMethods" : true,
+    "allPublicMethods" : true
+  },
+  {
+    "name": "org.postgresql.ds.PGSimpleDataSource",
+    "allDeclaredConstructors" : true,
+    "allPublicConstructors" : true,
+    "allDeclaredMethods" : true,
+    "allPublicMethods" : true
+  },
+  {
+     "name": "java.util.concurrent.CopyOnWriteArrayList",
+     "fields" : [
+       { "name" : "lock", "allowWrite" : true }
+     ]
+  },
+  {
+    "name" : "com.zaxxer.hikari.util.ConcurrentBag",
+    "allDeclaredConstructors" : true,
+    "allPublicConstructors" : true,
+    "allDeclaredMethods" : true,
+    "allPublicMethods" : true
+  },
+  {
+    "name" : "[Lcom.zaxxer.hikari.util.ConcurrentBag$IConcurrentBagEntry;",
+    "allDeclaredConstructors" : true,
+    "allPublicConstructors" : true,
+    "allDeclaredMethods" : true,
+    "allPublicMethods" : true
+  }
+]
